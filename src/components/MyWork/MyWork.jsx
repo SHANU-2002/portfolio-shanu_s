@@ -34,7 +34,7 @@ const MyWork = () => {
         <div className="mywork-container">
           {myworks.map((work,index)=>{
             return <div key={index} className="mywork-format">
-              <img src={work.w_img} alt={`Image of ${work.w_img}`} />
+              <img src={work.w_img}/>
               <h3>{work.w_name}</h3>
             </div>
           })}
