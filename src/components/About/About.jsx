@@ -7,14 +7,15 @@ const About = () => {
     const [ref, visible] = useReveal()
 
     const skills = [
-        { name: 'HTML & CSS', level: 80 },
+        { name: 'Core Java', level: 85 },
+        { name: 'Flutter', level: 90 },
+        { name: 'Dart', level: 80 },
+        { name: 'GraphQL', level: 85 },
         { name: 'JavaScript', level: 70 },
         { name: 'ReactJS', level: 60 },
         { name: 'SpringBoot', level: 75 },
         { name: 'MySQL', level: 80 },
-        { name: 'Flutter', level: 65 },
-        { name: 'Dart', level: 65 },
-        { name: 'GraphQL', level: 55 },
+
     ]
 
     return (

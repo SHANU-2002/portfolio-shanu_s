@@ -17,7 +17,7 @@ const Hero = () => {
                 </div>
 
                 <p className="hero-eyebrow reveal-child">
-                    <span className="hero-cursor" /> java fullstack &amp; mobile app developer
+                    <span className="hero-cursor" /> Java Fullstack &amp; Mobile App Developer
                 </p>
 
                 <h1 className="reveal-child">
