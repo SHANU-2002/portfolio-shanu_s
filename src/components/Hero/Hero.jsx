@@ -8,7 +8,7 @@ const Hero = () => {
     const [ref, visible] = useReveal()
 
     return (
-        <div id="home" className="hero">
+        <><div id="home" className="hero">
             <div className="hero-bg-grid" />
 
             <div ref={ref} className={`hero-inner reveal ${visible ? 'is-visible' : ''}`}>
@@ -36,21 +36,19 @@ const Hero = () => {
                         <AnchorLink className="anchor-link" href="#contact">Connect with me</AnchorLink>
                     </div>
                     <div className="hero-resume">
-                        <a
-                            href="https://drive.google.com/file/d/1DN23kPdhlYfqRKQIqPRtTMqel4D8SeQf/view?usp=drive_link"
-                            target="_blank"
-                            rel="noreferrer"
+
+                        href="https://drive.google.com/file/d/1DN23kPdhlYfqRKQIqPRtTMqel4D8SeQf/view?usp=drive_link"
+                        target="_blank"
+                        rel="noreferrer"
                         >
-                            My Résumé
-                        </a>
-                    </div>
+                        My Résumé
+                    </a>
                 </div>
             </div>
-
-            <div className="hero-scroll-hint">
+        </div><div className="hero-scroll-hint">
                 <span>scroll</span>
                 <div className="hero-scroll-line" />
-            </div>
+            </div></>
         </div>
     )
 }
