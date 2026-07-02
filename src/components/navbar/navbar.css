@@ -1,105 +1,212 @@
 .navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 20px 170px;
+    padding: 34px var(--edge);
+    z-index: 100;
+    transition: padding 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s var(--ease);
+    border-bottom: 1px solid transparent;
 }
 
-.navbar h1{
-    font-size: 60px;
-    font-weight: 600;
-    font-family: Outfit;
-    background:linear-gradient(267deg,#DA7C25 0.36%,#B923E1 102.6%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.navbar-scrolled{
+    padding: 18px var(--edge);
+    background: rgba(10,10,10,0.85);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
 }
 
-.nav-menu{
+.navbar-mark{
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar-mark-bracket{
+    color: var(--ink-faint);
+}
+
+/* ---------- desktop inline nav ---------- */
+
+.nav-menu-desktop{
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 60px;
-    font-size: 20px;
+    gap: 46px;
 }
 
-.nav-connect{
-    padding: 20px 40px;
-    border-radius: 50px;
-    background: linear-gradient(267deg,#DA7C25 0.36%,#B923E1 102.6%);
-    font-size: 22px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.nav-connect:hover{
-    transform: scale(1.05);
-}
-
-.nav-menu li{
+.nav-menu-desktop li{
     display: flex;
-    flex-direction: column;
-    gap:5px;
-    cursor: pointer;
-}
-
-.nav-menu li img{
-    display: flex;
-    margin: auto;
-    max-width: 30px;
 }
 
 .anchor-link{
     text-decoration: none;
-    color: white;
+    color: var(--ink-dim);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.25s ease;
 }
 
-.nav-mob-close{
+.anchor-link:hover{
+    color: var(--ink);
+}
+
+.nav-index{
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+}
+
+.nav-label{
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-label::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--white);
+    transition: width 0.3s var(--ease);
+}
+
+.anchor-link:hover .nav-label::after{
+    width: 100%;
+}
+
+.nav-label-active{
+    color: var(--ink);
+}
+
+.nav-label-active::after{
+    width: 100%;
+}
+
+/* ---------- mobile hamburger / close toggle ---------- */
+
+.nav-mob-toggle{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 210;
+    position: relative;
+}
+
+.nav-mob-bar{
+    width: 24px;
+    height: 1px;
+    background: var(--ink);
+    transition: transform 0.35s var(--ease), opacity 0.25s ease;
+}
+
+.nav-mob-toggle-open .nav-mob-bar:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-mob-toggle-open .nav-mob-bar:nth-child(2){
+    opacity: 0;
+}
+.nav-mob-toggle-open .nav-mob-bar:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- mobile drawer ----------
+   Deliberately NOT nested inside .navbar. .navbar-scrolled uses
+   backdrop-filter, and any ancestor with backdrop-filter/transform/filter
+   becomes the containing block for position:fixed descendants — which was
+   shrinking this drawer down to the navbar's own height. As a sibling of
+   .navbar, top/right/height here always resolve against the real viewport. */
+
+.nav-menu-mobile{
     display: none;
 }
-.nav-mob-open{
+
+.nav-scrim{
     display: none;
 }
-@media(max-width:768px){
-    .navbar{
-        margin: 20px 50px;
+
+@media(max-width: 1024px){
+    .navbar, .navbar-scrolled{
+        padding: 22px var(--edge-tab);
     }
 
-    .nav-connect{
+    .nav-menu-desktop{
         display: none;
     }
 
-    .nav-mob-open{
-        display: block;
-        position: fixed ;
-        right: 30px;
+    .nav-mob-toggle{
+        display: flex;
     }
 
-    .nav-mob-close{
-        display: block;
-        position: relative;
-        top: 30px;
-        left: 290px;
-        width: 30px;
-    }
-
-    .nav-menu{
-        position: fixed;
+    .nav-menu-mobile{
+        display: flex;
+        list-style: none;
         flex-direction: column;
-        align-items: start;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 34px;
+        position: fixed;
         top: 0;
-        gap: 30px;
-        background-color : #1F0016; 
-        width: 350px;
-        height: 100%;
-        z-index: 2;
-        transition: right 0.5s;
-        right: -350px;
+        right: 0;
+        height: 100vh;
+        height: 100dvh;
+        width: min(360px, 82vw);
+        background: var(--bg);
+        border-left: 1px solid var(--line);
+        padding: 0 var(--edge-mob);
+        transform: translateX(100%);
+        transition: transform 0.5s var(--ease);
+        z-index: 200;
+        overflow-y: auto;
     }
-    .nav-menu li{
-        flex-direction: row;
-        font-size: 30px;
-        padding-left: 100px;
-        gap:20px;
+
+    .nav-menu-mobile-open{
+        transform: translateX(0);
+    }
+
+    .nav-menu-mobile .anchor-link{
+        font-size: 22px;
+    }
+
+    .nav-scrim{
+        display: block;
+        position: fixed;
+        inset: 0;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(0,0,0,0.6);
+        z-index: 150;
+    }
+}
+
+@media(max-width: 480px){
+    .navbar, .navbar-scrolled{
+        padding: 20px var(--edge-mob);
+    }
+    .navbar-mark{
+        font-size: 17px;
     }
 }

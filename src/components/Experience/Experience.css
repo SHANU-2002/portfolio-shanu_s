@@ -1,0 +1,130 @@
+.experience-timeline{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 140px;
+}
+
+.experience-item{
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 32px;
+}
+
+.experience-marker{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.experience-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--ink-dim);
+    margin-top: 8px;
+    flex-shrink: 0;
+}
+
+.experience-dot-live{
+    background: var(--white);
+    border-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(244,243,239,0.12);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    0%, 100%{ box-shadow: 0 0 0 4px rgba(244,243,239,0.12); }
+    50%{ box-shadow: 0 0 0 8px rgba(244,243,239,0.05); }
+}
+
+.experience-line{
+    width: 1px;
+    flex: 1;
+    background: var(--line);
+    margin-top: 8px;
+}
+
+.experience-content{
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 56px;
+}
+
+.experience-item:last-child .experience-content{
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.experience-top{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 6px;
+}
+
+.experience-top h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.experience-duration{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+}
+
+.experience-company{
+    color: var(--ink-dim);
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+.experience-desc{
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 62ch;
+    margin-bottom: 22px;
+}
+
+.experience-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.experience-tag{
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--ink-dim);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.experience-tag:hover{
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+@media(max-width: 768px){
+    .experience-timeline{
+        padding-bottom: 70px;
+    }
+    .experience-item{
+        grid-template-columns: 20px 1fr;
+        gap: 20px;
+    }
+    .experience-top h3{
+        font-size: 20px;
+    }
+    .experience-content{
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+    }
+}

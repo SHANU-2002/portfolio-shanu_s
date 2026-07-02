@@ -1,44 +1,51 @@
 import React from 'react'
 import './Education.css'
+import { useReveal } from '../../hooks/useReveal'
 
-const Education = () => {
-
-  const Education_Details = [
+const Education_Details = [
     {
-        e_name:"BE-ECE",
-        e_institute:"Government College of Engineering,Erode",
-        e_percentage:"Percentage : ",
-        e_score:"78.9%"
+        e_name: 'BE — Electronics & Communication Engineering',
+        e_institute: 'Government College of Engineering, Erode',
+        e_score: '78.9%',
     },
     {
-        e_name:"HSC",
-        e_institute:"SNM Hindu Vidayalaya Matriculation Higher Secondary School, Nagercoil",
-        e_percentage:"Percentage : ",
-        e_score:"74.5%"
+        e_name: 'Higher Secondary Certificate',
+        e_institute: 'SNM Hindu Vidyalaya Matriculation Higher Secondary School, Nagercoil',
+        e_score: '74.5%',
     },
     {
-        e_name:"SSLC",
-        e_institute:"SNM Hindu Vidayalaya Matriculation Higher Secondary School, Nagercoil",
-        e_percentage:"Percentage : ",
-        e_score:"93.4%"
+        e_name: 'Secondary School Leaving Certificate',
+        e_institute: 'SNM Hindu Vidyalaya Matriculation Higher Secondary School, Nagercoil',
+        e_score: '93.4%',
     },
 ]
 
+const Education = () => {
+    const [ref, visible] = useReveal()
 
-  return (
-    <div id='education' className='education'>
-        <div className="education-title"><h1>Education & Experience</h1></div>
-        <div className="education-container">
-            {Education_Details.map((education,index)=>{
-                return <div key={index} className="education-format">
-                    <h3>{education.e_name}</h3>
-                    <h2>{education.e_institute}</h2>
-                    <p>{education.e_percentage}<span>{education.e_score}</span></p>
-                </div>
-            })}
+    return (
+        <div id="education" className="education section">
+            <p className="eyebrow">// 03 — education</p>
+            <h2 className="section-title">Education</h2>
+
+            <div ref={ref} className={`education-container reveal ${visible ? 'is-visible' : ''}`}>
+                {Education_Details.map((education, index) => (
+                    <div
+                        key={index}
+                        className="education-format reveal-child"
+                        style={{ transitionDelay: `${index * 90}ms` }}
+                    >
+                        <span className="education-index">{String(index + 1).padStart(2, '0')}</span>
+                        <div className="education-body">
+                            <h3>{education.e_name}</h3>
+                            <p className="education-institute">{education.e_institute}</p>
+                        </div>
+                        <p className="education-score">{education.e_score}</p>
+                    </div>
+                ))}
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
-export default Education;
+export default Education

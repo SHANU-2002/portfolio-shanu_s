@@ -2,22 +2,57 @@ import React from 'react'
 import './Hero.css'
 import profile from '../../assets/profile.png'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { useReveal } from '../../hooks/useReveal'
 
 const Hero = () => {
-  return (
-    <div id='home' className='hero'>
-       <img src={profile} alt="profile" height={250}  /> 
-       <h1><span>I'm Shanu S,</span>Java FullStack Developer from Nagercoil</h1>
-       <p>A passionate Java and Frontend developer eager to build seamless and dynamic web applications. </p>
-       <div className="hero-action">
-        <div className="hero-connect">
-            <AnchorLink className='anchor-link'  href='#contact'>Connect with me</AnchorLink></div>
-        <div className="hero-resume">
-        <a href='https://drive.google.com/file/d/1hcdtso4jxDhF12LDexyTduOMDqtfiD4X/view?usp=drive_link'>My Resume</a>
+    const [ref, visible] = useReveal()
+
+    return (
+        <div id="home" className="hero">
+            <div className="hero-bg-grid" />
+
+            <div ref={ref} className={`hero-inner reveal ${visible ? 'is-visible' : ''}`}>
+                <div className="hero-frame reveal-child">
+                    <img src={profile} alt="Shanu S" className="hero-img" />
+                </div>
+
+                <p className="hero-eyebrow reveal-child">
+                    <span className="hero-cursor" /> java fullstack &amp; mobile app developer
+                </p>
+
+                <h1 className="reveal-child">
+                    Shanu S — building clean, <span className="hero-highlight">functional</span> software
+                    for web &amp; mobile.
+                </h1>
+
+                <p className="hero-sub reveal-child">
+                    I design and ship full-stack products with React and Spring Boot,
+                    and extend that work into native mobile experiences with Flutter,
+                    Dart and GraphQL.
+                </p>
+
+                <div className="hero-action reveal-child">
+                    <div className="hero-connect">
+                        <AnchorLink className="anchor-link" href="#contact">Connect with me</AnchorLink>
+                    </div>
+                    <div className="hero-resume">
+                        <a
+                            href="https://drive.google.com/file/d/1DN23kPdhlYfqRKQIqPRtTMqel4D8SeQf/view?usp=drive_link"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            My Résumé
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div className="hero-scroll-hint">
+                <span>scroll</span>
+                <div className="hero-scroll-line" />
+            </div>
         </div>
-       </div>
-    </div>
-  )
+    )
 }
 
 export default Hero
