@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import './Hero.css'
 import profile from '../../assets/profile.png'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
@@ -8,7 +8,7 @@ const Hero = () => {
     const [ref, visible] = useReveal()
 
     return (
-        <><div id="home" className="hero">
+        <div id="home" className="hero">
             <div className="hero-bg-grid" />
 
             <div ref={ref} className={`hero-inner reveal ${visible ? 'is-visible' : ''}`}>
@@ -36,19 +36,15 @@ const Hero = () => {
                         <AnchorLink className="anchor-link" href="#contact">Connect with me</AnchorLink>
                     </div>
                     <div className="hero-resume">
-
-                        href="https://drive.google.com/file/d/1DN23kPdhlYfqRKQIqPRtTMqel4D8SeQf/view?usp=drive_link"
-                        target="_blank"
-                        rel="noreferrer"
-                        >
-                        My Résumé
-                    </a>
+                        <a href="https://drive.google.com/file/d/1DN23kPdhlYfqRKQIqPRtTMqel4D8SeQf/view?usp=drive_link" target="_blank" rel="noreferrer">My Résumé</a>
+                    </div>
                 </div>
             </div>
-        </div><div className="hero-scroll-hint">
+
+            <div className="hero-scroll-hint">
                 <span>scroll</span>
                 <div className="hero-scroll-line" />
-            </div></>
+            </div>
         </div>
     )
 }

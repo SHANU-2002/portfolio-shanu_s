@@ -116,7 +116,8 @@
 }
 
 .hero-connect .anchor-link{
-    color: var(--bg);
+    justify-content: center;
+    width: 100%;
 }
 
 .hero-connect:hover{
