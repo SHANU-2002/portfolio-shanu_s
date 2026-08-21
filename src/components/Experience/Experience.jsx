@@ -6,7 +6,7 @@ const EXPERIENCE = [
     {
         role: 'Mobile Application Developer',
         company: 'Vinkweb Infotech Private Limited',
-        duration: 'Sep 2025 — Present',
+        duration: 'Sep 2025 — Aug 2026',
         status: 'current',
         description:
             'Building and maintaining cross-platform mobile applications, working across the full app lifecycle from UI implementation to API integration and release.',
